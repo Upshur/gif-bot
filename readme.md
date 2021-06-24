@@ -1,9 +1,12 @@
-BU BOT [GWEEP CREATIVE#0001](https://discord.com/users/586822327568695317) ve [🌙 'TunaR!#3946](https://discord.com/users/717411894897672212) TARAFINDAN KODLANMIŞTIR!
+## GWEEP CREATIVE - TWITCH DUYURU BOTU
+
+
+BU BOT [Gweep Creative#0001](https://discord.com/users/586822327568695317) ve [🌙 'TunaR!#3946](https://discord.com/users/717411894897672212) TARAFINDAN KODLANMIŞTIR!
 LÜTFEN ÇALMAYINIZ VE AYNI ALT YAPIDAN TEKRAR VİDEOSU ÇEKMEYİNİZ AKSİ TAKDİRDE GEREKLİ İŞLEM BAŞLATICAKTIR!
 
 
-[Gweep Creative Youtube]() <br>
-[Gweep Creative Discord]() <br>
-[Gweep Creative Twitch]() <br>
+[Gweep Creative Youtube](http://gweepcreative.com/) <br>
+[Gweep Creative Discord](http://dc.gweepcreative.com/) <br>
+[Gweep Creative Twitch](http://tw.gweepcreative.com/) <br>
 
-```  DEVELOPERS BY GWEEP CREATIVE  ``` 
+**```  DEVELOPERS BY GWEEP CREATIVE  ```**
