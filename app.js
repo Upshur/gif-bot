@@ -3,23 +3,16 @@ const client = new Discord.Client();
 const ayarlar = require("./ayarlar.json");
 const { Client, Util } = require("discord.js");
 const fs = require("fs");//gweep creative
-require("./util/eventLoader")(client);//gweep creative
-
-//gweep creative
-const log = message => {
-  console.log(`${message}`);
-};
-//gweep creative
 
 //gweep creative
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir("./komutlar/", (err, files) => {
   if (err) console.error(err);
-  log(`${files.length} komut yüklenecek.`);
+  console.log(`${files.length} komut yüklenecek.`);
   files.forEach(f => {
     let props = require(`./komutlar/${f}`);
-    log(`Yüklenen komut: ${props.help.name}.`);
+    console.log(`Yüklenen komut: ${props.help.name}.`);
     client.commands.set(props.help.name, props);
     props.conf.aliases.forEach(alias => {
       client.aliases.set(alias, props.help.name);
@@ -27,60 +20,29 @@ fs.readdir("./komutlar/", (err, files) => {
   });
 });
 //gweep creative
-client.reload = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)];
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
-        if (cmd === command) client.aliases.delete(alias);
-      });
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-client.load = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      let cmd = require(`./komutlar/${command}`);//gweep creative
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-client.elevation = message => {
-  if (!message.guild) {
-    return;
-  }
-  let permlvl = 0;
-  if (message.member.permissions.has("MANAGE_MESSAGES")) permlvl = 1;
-  if (message.member.permissions.has("BAN_MEMBERS")) permlvl = 2;
-  if (message.member.permissions.has("ADMINISTRATOR")) permlvl = 2;
-  if (message.author.id === message.guild.owner.id) permlvl = 4;
-  return permlvl;
-};//gweep creative
-
-var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g
-
-const moment = require('moment');
-moment.locale('tr');//gweep creative
-const { S_IFREG } = require("constants");
-const logs = require('discord-logs');
-logs(client);
 
 client.login(ayarlar.token);
 
+client.on("message", async message => {
+  if (message.author.bot) return;
+  if (message.channel.type === 'dm') return;
+  let prefix = ayarlar.prefix;
+  if (message.content.startsWith(prefix)) {
+  let command = message.content.split(' ')[0].slice(prefix.length);
+  let params = message.content.split(' ').slice(1);
+  let cmd;
+  if (client.commands.has(command)) {
+    cmd = client.commands.get(command);
+  } else if (client.aliases.has(command)) {
+    cmd = client.commands.get(client.aliases.get(command));
+  }
+  if (cmd) cmd.run(client, message, params);
+  }
+}) 
 
+client.on("ready", async () => {
+  client.user.setActivity(`RabeL`, { type: "PLAYING" });
+  client.user.setStatus("online");
+  console.log("Aktif!")
+console.log(`${client.user.username} ismiyle bağlandım.`);
+})
