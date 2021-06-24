@@ -72,7 +72,7 @@ client.on("ready", async () => {
       const userlogin = res.data[0].user_login;
       const game = res.data[0].game_name;
       const title = res.data[0].title;
-      const viewer_count = res.data[0].view_count;
+      const viewer_count = res.data[0].viewer_count;
       const thumbnail = res.data[0].thumbnail_url.replace("{width}", 500).replace("{height}", 250); 
       
        const embed = new Discord.MessageEmbed()
