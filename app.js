@@ -11,10 +11,8 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir("./komutlar/", (err, files) => {
   if (err) console.error(err);
-  console.log(`${files.length} komut yüklenecek.`);
   files.forEach(f => {
     let props = require(`./komutlar/${f}`);
-    console.log(`Yüklenen komut: ${props.help.name}.`);
     client.commands.set(props.help.name, props);
     props.conf.aliases.forEach(alias => {
       client.aliases.set(alias, props.help.name);
@@ -46,7 +44,6 @@ client.on("ready", async () => {
   client.user.setActivity(`RabeL`, { type: "PLAYING" });
   client.user.setStatus("online");
   console.log("Aktif!")
-console.log(`${client.user.username} ismiyle bağlandım.`);
 })
 
 const twitchs = {};
@@ -55,6 +52,8 @@ client.on("ready", async () => {
   
   setInterval(async () => {
    client.guilds.cache.forEach(async guild => {
+     if(twitchs[guild.id]) return;
+     
      let data = await db.get(`twitch.${guild.id}`) || { channel: null, name: null };
      if(!data.channel) return;
      if(!data.name) return;
@@ -64,44 +63,34 @@ client.on("ready", async () => {
      headers: { "client-id": ayarlar.twitch_client_id, "Authorization": `Bearer ${ayarlar.twitch_token}` }
      }).then(response => response.json().then(res => {
      if(!res.data.length) return;
+       
+     console.log(res.data[0]);
 
      const channel = guild.channels.cache.get(data.channel);
 
      if(!channel) return;
        
       const username = res.data[0].user_name;
-       const 
+      const userlogin = res.data[0].user_login;
       const game = res.data[0].game_name;
       const title = res.data[0].title;
       const viewer_count = res.data[0].view_count;
       const thumbnail = res.data[0].thumbnail_url.replace("{width}", 500).replace("{height}", 250); 
+      
+       const embed = new Discord.MessageEmbed()
+       .setAuthor(username)
+       .setImage(thumbnail)
+       .setTitle(title)
+       .addField(`Game`, game, true)
+       .addField(`Viewers`, viewer_count, true)
+       .setColor("PURPLE")
+       .setURL("https://twitch.tv/"+userlogin);
        
-       
+      twitchs[guild.id] = true;
+
+       return channel.send(embed);
      }))
      })
   }, 5000);
 })
 
-//bu konsola neden yazmıyor
-/*
-
-.then(response => response.json()
-.then(res => {
-if(!res.data.length) return;
-
-const channel = guild.channels.cache.get(data.channel);
-
-if(!channel) return;
-
-const username = res.data[0].user_name;
-const game = res.data[0].game_name;
-const title = res.data[0].title;
-const viewer_count = res.data[0].view_count;
-const thumbnail = res.data[0].thumbnail_url.replace("{width}", 500).replace("{height}", 250);
-
-const msg = new Discord.MessageEmbed().setTitle(title).setColor("#ffff");
-
-twitchs[guild.id] = true;
-return channel.send(msg);
-})
-         */
