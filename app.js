@@ -64,8 +64,6 @@ client.on("ready", async () => {
      }).then(response => response.json().then(res => {
      if(!res.data.length) return;
        
-     console.log(res.data[0]);
-
      const channel = guild.channels.cache.get(data.channel);
 
      if(!channel) return;
@@ -87,7 +85,7 @@ client.on("ready", async () => {
        .setURL("https://twitch.tv/"+userlogin);
        
       twitchs[guild.id] = true;
-
+       
        return channel.send(embed);
      }))
      })
