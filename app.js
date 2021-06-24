@@ -48,23 +48,46 @@ client.on("ready", async () => {
 console.log(`${client.user.username} ismiyle bağlandım.`);
 })
 
+const twitchs = {};
+
 client.on("ready", async () => {
   setInterval(async () => {
-    client.guilds.cache.forEach(async guild => {
+    for (const guild of client.guilds.cache.array()) {
+      const data = await db.get(`twitch.${guild.id}`) || { channel: null, name: null };
+if(!data.channel) return;
+if(!data.name) return;
+    
+client.guilds.cache.forEach(async guild => {
+fetch(`https://api.twitch.tv/helix/streams?user_login=${data.name}`, { 
+method: "GET",
+headers: { "client-id": ayarlar.twitch_client_id, "Authorization": `Bearer ${ayarlar.twitch_token}` }
+}).then(response => response.json()).then(res => {
+if(!res.data.length) return;
+
+const channel = guild.channels.cache.get(data.channel);
+
+if(!channel) return;
+
+const username = res.data[0].user_name;
+const game = res.data[0].game_name;
+const title = res.data[0].title;
+const viewer_count = res.data[0].view_count;
+const thumbnail = res.data[0].thumbnail_url.replace("{width}", 500).replace("{height}", 250);
+
+const msg = new Discord.MessageEmbed().setTitle(title).setColor("#ffff");
+  
+twitchs[guild.id] = true;
+return channel.send(msg);
+
 })
+})
+    }
   }, 5000);
 })
 
 /*
 
-const data = await db.get(`twitch.${guild.id}`) || { channel: null, name: null };
-if(!data.channel) return;
-if(!data.name) return;
-  
-fetch(`https://api.twitch.tv/helix/streams?user_login=${tag.name}`, { 
-method: "GET",
-headers: { "client-id": ayarlar.twitch_client_id, "Authorization": `Bearer ${ayarlar.twitch_token}` }
-}).then(response => response.json()
+.then(response => response.json()
 .then(res => {
 if(!res.data.length) return;
 
