@@ -1,5 +1,6 @@
 const db = require("quick.db");
 const Discord = require('discord.js');
+const fetch = require("node-fetch");
 const ayarlar = require("../ayarlar.json");
 exports.run = async (client, message, args) => { 
   if(args[0] === "ayarla") {
@@ -10,19 +11,17 @@ exports.run = async (client, message, args) => {
   } else if(args[0] === "kanal") {
    let arguman = args.slice(1).join(" ");
    if(!arguman) return message.channel.send("Twitch Kanalini belirtmelisin.");
-    fetch(`https://api.twitch.tv/helix/search/channels?query=${arguman}&first=1`, {
-method: "GET",
-header: { "Authorization": `Bearer ${ayarlar.twitch_token}`}
-}).then(response => response.json().then(res => {
-if(!res.data.length) return message.channel.send("Kullanici bulunamadi");
-let data = res.data[0];
 db.set(`twitch.${message.guild.id}.name`, arguman);
 message.channel.send(`Twitch Kanali başarıyla ayarlandı.`);
-}).catch(() => {
-return message.channel.send("Kullanici bulunamadi");
-}))
+  } else if(args[0] === "sıfırla") {
+    let data = await db.get(`twitch.${message.guild.id}`);
+    if(!data) return message.channel.send("zaten ayarlı degil")
+    if(!data.name) return message.channel.send("zaten ayarlı degil")
+    if(!data.channel) return message.channel.send("zaten ayarlı degil")
+    db.delete(`twitch.${message.guild.id}`);
+    message.channel.send("Tüm Ayarlar Sıfırlandı!");
   } else {
-    return message.channel.send("Bir arguman belirt `(kanal, ayarla)`");
+    return message.channel.send("Bir arguman belirt `(kanal, ayarla, sıfırla)`");
 }
 }
   exports.conf = {
@@ -33,3 +32,5 @@ return message.channel.send("Kullanici bulunamadi");
   exports.help = {
     name: 'twitch'
   }
+
+//bitti .d lfhgpglh

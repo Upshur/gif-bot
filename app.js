@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const ayarlar = require("./ayarlar.json");
 const { Client, Util } = require("discord.js");
 const db = require("quick.db");
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
 const fs = require("fs");//gweep creative
 
 //gweep creative
