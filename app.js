@@ -62,7 +62,8 @@ client.guilds.cache.forEach(async guild => {
 fetch(`https://api.twitch.tv/helix/streams?user_login=${data.name}`, { 
 method: "GET",
 headers: { "client-id": ayarlar.twitch_client_id, "Authorization": `Bearer ${ayarlar.twitch_token}` }
-}).then(response => response.json()).then(res => { console.log(res.data[0]);
+}).then(response => response.json()).then(res => { 
+  console.log(res.data[0]);
 if(!res.data.length) return;
 
 const channel = guild.channels.cache.get(data.channel);
@@ -88,7 +89,7 @@ const embed = new Discord.MessageEmbed()
 
   
 twitchs[guild.id] = true;
-return channel.send(msg);
+return channel.send(embed);
 
 })
 })
