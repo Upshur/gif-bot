@@ -41,7 +41,7 @@ client.on("message", async message => {
 }) 
 
 client.on("ready", async () => {
-  client.user.setActivity(`RabeL`, { type: "PLAYING" });
+  client.user.setActivity(`!yardım`);
   client.user.setStatus("online");
   console.log("Aktif!")
 })
