@@ -16,6 +16,7 @@ exports.run = async (client, message, args) => {
   \`${prefix}man\` man gif atar.
   \`${prefix}woman\` woman gif atar.
   \`${prefix}yardım\` yardım menüsünü açar.`)
+  .setThumbnail(client.user.avatarURL())
   message.channel.send(yardım)
 }
   exports.conf = {
