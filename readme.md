@@ -1,4 +1,4 @@
-## GWEEP CREATIVE - TWITCH DUYURU BOTU
+## GWEEP CREATIVE - GİF BOTU
 
 
 BU BOT [Gweep Creative#0001](https://discord.com/users/586822327568695317) ve [🌙 'TunaR!#3946](https://discord.com/users/717411894897672212) TARAFINDAN KODLANMIŞTIR!
