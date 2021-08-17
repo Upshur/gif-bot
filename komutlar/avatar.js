@@ -17,5 +17,5 @@ exports.run = async (client, message, args) => {
     aliases: []
   }
   exports.help = {
-    name: 'usergif'
+    name: 'avatar'
   }
