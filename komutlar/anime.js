@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     let channel = message.mentions.channels.first();
     if(!channel) return message.reply('Lütfen Bir Kanal Belirtiniz.')
   }
-  
+ 
   const { data } = await axios.get("https://gif-api.vercel.app/api/gif/anime");
   return message.channel.send(data);
   
