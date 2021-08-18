@@ -11,6 +11,18 @@ exports.run = async (client, message, args) => {
     if(!channel) return message.reply('Lütfen Bir Kanal Belirtiniz.')
     
   }
+   if(args[0]=='gif'){
+     const { data } = await axios.get("https://gif-api.vercel.app/api/gif/woman");
+  return message.channel.send(data);
+  }
+  if(args[0]=='pp'){
+     const { data } = await axios.get("https://gif-api.vercel.app/api/pp/woman");
+  return message.channel.send(data);
+  }
+  if(!args[0]){
+     const { data } = await axios.get("https://gif-api.vercel.app/api/gif/woman");
+  return message.channel.send(data);
+  }
 }
   exports.conf = {
     enabled: true,
