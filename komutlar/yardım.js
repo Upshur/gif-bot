@@ -17,12 +17,16 @@ exports.run = async (client, message, args) => {
   \`${prefix}man\` man gif atar.
   \`${prefix}woman\` woman gif atar.`)
   .addField('PP Komutları',`
-  \`${prefix}anime pp\` anime p atar.
+  \`${prefix}anime pp\` anime pp atar.
   \`${prefix}avatar\` üyelerin profil fotolarını atar.
   \`${prefix}banner\` üyelerin bannerlarını atar.
   \`${prefix}couple pp\` couple pp atar.
   \`${prefix}man pp\` man pp atar.
   \`${prefix}woman pp\` woman pp atar.`)
+  .addField('Genel Komutlar',`
+  \`${prefix}başlat #kanal\` belirlenen kanala random gifler atar.
+  \`${prefix}durdur #kanal\` belirlenen kanala random gifler atmayı durdurur.
+  \`${prefix}yardım\` yardım menüsünü açar.`)
   .setThumbnail(client.user.avatarURL())
   message.channel.send(yardım)
 }

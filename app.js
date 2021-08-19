@@ -52,7 +52,7 @@ const array = ["man", "woman", "anime", "couple"]
 const array2 = ["pp", "gif"]
 const arrayrandom = array[Math.floor(Math.random() * array.length)];
 const array2random = array2[Math.floor(Math.random() * array2.length)];
-axios.get("https://gif-api.vercel.app/api/"+array2random+"/"+arrayrandom).then(a => client.channels.cache.get("877883932492832798").send(a.data));
+axios.get("https://gif-api.vercel.app/api/"+array2random+"/"+arrayrandom).then(a => client.channels.cache.get(ayarlar.randomkanal).send(a.data));
 }, 5000)
   */
 })
