@@ -46,13 +46,12 @@ client.on("ready", async () => {
   client.user.setStatus("online");
   console.log("Aktif!")
   
-  client.on("ready", async () => {
-setInterval(() => {
+  setInterval(() => {
 const array = ["man", "woman", "anime", "couple"]
 const array2 = ["pp", "gif"]
-axios.get("https://gif-api.verce.app/api/"+array2.random()+"/gif/"+array.random()).then(a => client.channels.cache.get(ayarlar.randomkanal).send(a.data));
+axios.get("https://gif-api.verce.app/api/"+array2.random()+"/gif/"+array.random()).then(a => client.channels.cache.get("877883932492832798").send(a.data));
 }, 5000)
-})
+  
 })
 
 

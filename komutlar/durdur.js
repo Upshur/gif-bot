@@ -8,8 +8,8 @@ exports.run = async (client, message, args) => {
  
  if(!kanal) return message.channel.send(new Discord.MessageEmbed().setDescription('Lütfen Bir kanal Belirtiniz').setColor("RANDOM"));
   
-  db.set(`${kanal}.id`, true);
-   message.channel.send(`Random Gif ${kanal} kanalında başlatıldı.`)
+  db.delete(`${kanal}.id`, true);
+  message.channel.send(`Random Gif Durduruldu.`)
  
  
 }
@@ -19,5 +19,5 @@ exports.run = async (client, message, args) => {
     aliases: []
   }
   exports.help = {
-    name: 'başlat'
+    name: 'durdur'
   }
