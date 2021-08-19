@@ -4,13 +4,14 @@ const fetch = require("node-fetch");
 const ayarlar = require("../ayarlar.json");
 exports.run = async (client, message, args) => { 
   
- if(args[0] == 'pp'){
-   
- }
-  
+  const kişicikabi = message.mentions.users.first() || message.guild.members.cache.get(args[0]) || message.author
+
   const embed = new Discord.MessageEmbed()
-  .setImage()
-  .setFooter(message.author.tag + 'Tarafı')
+  .setAuthor(kişicikabi.tag ,kişicikabi.avatarURL())
+  .setImage(kişicikabi.avatarURL({ dynamic: true, format: 'gif', size: 1024 }))
+  .setFooter(message.author.tag + 'Tarafından istendi', message.author.avatarURL())
+  message.channel.send(embed)
+ 
 }
   exports.conf = {
     enabled: true,
