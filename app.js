@@ -45,16 +45,18 @@ client.on("ready", async () => {
   client.user.setActivity(`!yardım`);
   client.user.setStatus("online");
   console.log("Aktif!")
-  /*
+  
   setInterval(() => {
-  if()
+  const data = db.get("gif-pp")
+  if(data){
 const array = ["man", "woman", "anime", "couple"]
 const array2 = ["pp", "gif"]
 const arrayrandom = array[Math.floor(Math.random() * array.length)];
 const array2random = array2[Math.floor(Math.random() * array2.length)];
 axios.get("https://gif-api.vercel.app/api/"+array2random+"/"+arrayrandom).then(a => client.channels.cache.get(ayarlar.randomkanal).send(a.data));
-}, 5000)
-  */
+}
+  }, 10000)
+  
 })
 
 

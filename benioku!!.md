@@ -9,4 +9,4 @@ LÜTFEN ÇALMAYINIZ VE AYNI ALT YAPIDAN TEKRAR VİDEOSU ÇEKMEYİNİZ AKSİ TAKD
 [Gweep Creative Discord](http://dc.gweepcreative.com/) <br>
 [Gweep Creative Twitch](http://tw.gweepcreative.com/) <br>
 
-**```  DEVELOPERS BY GWEEP CREATIVE  ```**
+**```  DEVELOPER BY GWEEP CREATIVE  ```**
