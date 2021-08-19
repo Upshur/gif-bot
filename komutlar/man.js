@@ -5,14 +5,24 @@ const axios = require("axios");
 const ayarlar = require("../ayarlar.json");
 exports.run = async (client, message, args) => { 
   
-  if(args[0] == 'ayarla'){
-    if(!message.guild.member.permissions.has('ADMINISTRATOR')) return message.reply('Bu Komutu kullanmaya yetkiniz yok.')
-    let channel = message.mentions.channels.first();
-    if(!channel) return message.reply('Lütfen Bir Kanal Belirtiniz.')
-    
+   if(args[0] == 'pp'){
+    const { data } = await axios.get("https://gif-api.vercel.app/api/pp/man");
+     
+  const embed = new Discord.MessageEmbed()
+  .setImage(data)
+  .setFooter(message.author.tag + ' Tarafından istendi', message.author.avatarURL())
+  
+  return message.channel.send(embed);
   }
-   const { data } = await axios.get("https://gif-api.vercel.app/api/pp/man");
-  return message.channel.send(data);
+ 
+  const { data } = await axios.get("https://gif-api.vercel.app/api/gif/man");
+  
+  const embed = new Discord.MessageEmbed()
+  .setImage(data)
+  .setFooter(message.author.tag + ' Tarafından istendi', message.author.avatarURL())
+  
+  return message.channel.send(embed);
+  
 }
   exports.conf = {
     enabled: true,

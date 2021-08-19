@@ -4,12 +4,13 @@ const fetch = require("node-fetch");
 const ayarlar = require("../ayarlar.json");
 exports.run = async (client, message, args) => { 
   
-  if(args[0] == 'ayarla'){
-    if(!message.guild.member.permissions.has('ADMINISTRATOR')) return message.reply('Bu Komutu kullanmaya yetkiniz yok.')
-    let channel = message.mentions.channels.first();
-    if(!channel) return message.reply('Lütfen Bir Kanal Belirtiniz.')
-    
-  }
+ if(args[0] == 'pp'){
+   
+ }
+  
+  const embed = new Discord.MessageEmbed()
+  .setImage()
+  .setFooter(message.author.tag + 'Tarafı')
 }
   exports.conf = {
     enabled: true,

@@ -9,21 +9,19 @@ exports.run = async (client, message, args) => {
   .setTitle('Yardım Menüsü')
   .setDescription(`Aşağıdaki komutları kullanarak giflere ulaşabilirsiniz.`)
   .addField('Gif Komutları',`
-  \`${prefix}animal\` animal gif atar.
   \`${prefix}anime\` anime gif atar.
   \`${prefix}avatar\` üyelerin profil fotolarını atar.
   \`${prefix}banner\` üyelerin bannerlarını atar.
   \`${prefix}couple\` couple gif atar.
   \`${prefix}man\` man gif atar.
   \`${prefix}woman\` woman gif atar.`)
-  .addField('Kanal Komutları',`
-  \`${prefix}animal ayarla/sıfırla\` animal gif kanalını ayarlar/sıfırlar.
-  \`${prefix}anime ayarla/sıfırla\` anime gif kanalını ayarlar/sıfırlar.
-  \`${prefix}avatar ayarla/sıfırla\` üyelerin avatar kanalını ayarlar/sıfırlar.
-  \`${prefix}banner ayarla/sıfırla\` üyelerin banner kanalını ayarlar/sıfırlar.
-  \`${prefix}couple ayarla/sıfırla\` couple gif kanalını ayarlar/sıfırlar.
-  \`${prefix}man ayarla/sıfırla\` man gif kanalını ayarlar/sıfırlar.
-  \`${prefix}woman ayarla/sıfırla\` woman gif kanalını ayarlar/sıfırlar.`)
+  .addField('PP Komutları',`
+  \`${prefix}anime pp\` anime p atar.
+  \`${prefix}avatar pp\` üyelerin profil fotolarını atar.
+  \`${prefix}banner\` üyelerin bannerlarını atar.
+  \`${prefix}couple pp\` couple pp atar.
+  \`${prefix}man pp\` man pp atar.
+  \`${prefix}woman pp\` woman pp atar.`)
   .setThumbnail(client.user.avatarURL())
   message.channel.send(yardım)
 }
