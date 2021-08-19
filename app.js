@@ -47,7 +47,7 @@ client.on("ready", async () => {
   console.log("Aktif!")
   /*
   setInterval(() => {
-  if(db.get)
+  if()
 const array = ["man", "woman", "anime", "couple"]
 const array2 = ["pp", "gif"]
 const arrayrandom = array[Math.floor(Math.random() * array.length)];

@@ -24,8 +24,8 @@ exports.run = async (client, message, args) => {
   \`${prefix}man pp\` man pp atar.
   \`${prefix}woman pp\` woman pp atar.`)
   .addField('Genel Komutlar',`
-  \`${prefix}başlat #kanal\` belirlenen kanala random gifler atar.
-  \`${prefix}durdur #kanal\` belirlenen kanala random gifler atmayı durdurur.
+  \`${prefix}başlat\` ayarlanan kanala random gifler atar.
+  \`${prefix}durdur\` ayarlanan kanala random gifler atmayı durdurur.
   \`${prefix}yardım\` yardım menüsünü açar.`)
   .setThumbnail(client.user.avatarURL())
   message.channel.send(yardım)

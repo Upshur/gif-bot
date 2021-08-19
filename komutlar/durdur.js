@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
  
  if(!kanal) return message.channel.send(new Discord.MessageEmbed().setDescription('Lütfen Bir kanal Belirtiniz').setColor("RANDOM"));
   
-  db.delete(`${kanal}.id`, true);
+  db.delete(`random`, true);
   message.channel.send(`Random Gif Durduruldu.`)
  
  
