@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const ayarlar = require("./ayarlar.json");
 const { Client, Util } = require("discord.js");
 const db = require("quick.db");
+const axios = require("axios");
 const fetch = require("node-fetch");
 const fs = require("fs");//gweep creative
 
@@ -45,7 +46,13 @@ client.on("ready", async () => {
   client.user.setStatus("online");
   console.log("Aktif!")
   
-  
+  client.on("ready", async () => {
+setInterval(() => {
+const array = ["man", "woman", "anime", "couple"]
+const array2 = ["pp", "gif"]
+axios.get("https://gif-api.verce.app/api/"+array2.random()+"/gif/"+array.random()).then(a => client.channels.cache.get(ayarlar.randomkanal).send(a.data));
+}, 5000)
+})
 })
 
 

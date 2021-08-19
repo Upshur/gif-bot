@@ -1,6 +1,7 @@
 const db = require("quick.db");
 const Discord = require('discord.js');
 const fetch = require("node-fetch");
+const axios = require("axios");
 const ayarlar = require("../ayarlar.json");
 exports.run = async (client, message, args) => { 
   let prefix = ayarlar.prefix;
