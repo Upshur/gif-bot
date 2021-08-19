@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
   \`${prefix}woman\` woman gif atar.`)
   .addField('PP Komutları',`
   \`${prefix}anime pp\` anime p atar.
-  \`${prefix}avatar pp\` üyelerin profil fotolarını atar.
+  \`${prefix}avatar\` üyelerin profil fotolarını atar.
   \`${prefix}banner\` üyelerin bannerlarını atar.
   \`${prefix}couple pp\` couple pp atar.
   \`${prefix}man pp\` man pp atar.

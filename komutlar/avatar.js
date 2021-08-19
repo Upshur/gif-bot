@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 try{
    const embed = new Discord.MessageEmbed()
   .setAuthor(kişicikabi.tag ,kişicikabi.avatarURL())
-  .setImage(kişicikabi.avatarURL({ dynamic: true, size: 1024 }))
+  .setImage(kişicikabi.avatarURL({ dynamic: true, format:'png', size: 1024 }))
   .setFooter(message.author.tag + 'Tarafından istendi', message.author.avatarURL())
   message.channel.send(embed)
 }

@@ -44,6 +44,8 @@ client.on("ready", async () => {
   client.user.setActivity(`!yardım`);
   client.user.setStatus("online");
   console.log("Aktif!")
+  
+  
 })
 
 
