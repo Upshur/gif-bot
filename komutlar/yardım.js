@@ -6,7 +6,7 @@ const ayarlar = require("../ayarlar.json");
 exports.run = async (client, message, args) => { 
   let prefix = ayarlar.prefix;
   const yardım = new Discord.MessageEmbed()
-  .setAuthor('Gweep Creative Gif Bot', client.user.avatarURL())
+  .setAuthor('Samurai Jack Gif Bot', client.user.avatarURL())
   .setTitle('Yardım Menüsü')
   .setDescription(`Aşağıdaki komutları kullanarak giflere ulaşabilirsiniz.`)
   .addField('Gif Komutları',`
